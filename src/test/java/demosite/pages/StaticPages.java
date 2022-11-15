@@ -5,7 +5,7 @@ import io.gatling.javaapi.core.ChainBuilder;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
-// logical collection of static pages for simplicity.
+// logical collection of static pages for simplicity. We don't have any.
 public class StaticPages {
 
     public static ChainBuilder homepage =

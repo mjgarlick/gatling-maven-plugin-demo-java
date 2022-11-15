@@ -1,11 +1,7 @@
 package demosite;
 import demosite.simulation.PopulationTypes;
-import demosite.simulation.TestScenario;
-import demosite.simulation.UserPathway;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
-
-import java.time.Duration;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
@@ -19,7 +15,7 @@ public class DemoLoginSite extends Simulation {
     private HttpProtocolBuilder httpProtocol =
             http.baseUrl(DOMAIN)
                     .acceptHeader("application/json")
-                    .header("cache-control", "no-cache");
+                    .header("cache-control", "no-cache"); // get 302's on repeated calls otherwise.
 
     {
         switch(TYPE_OF_TEST) {

@@ -25,16 +25,17 @@ public class AddBook {
     }
 
     public static int gameId() {
-        return (int) (100000 + (r.nextFloat() * 900000));
+        return (int) (1000000 + (r.nextFloat() * 9000000));
     }
 
+    // custom feeder that generates randomised data for use instead of file driven.
+    // useful for large testing volumes but requires clearing down (drop db).
     private static Iterator<Map<String, Object>> bookFeeder =
         Stream.generate((Supplier<Map<String, Object>>) () -> {
-            String author = RandomStringUtils.randomAlphabetic(5,10);
-            String isbn = String.valueOf(100000 + r.nextFloat() * 900000);
-            String title = RandomStringUtils.randomAlphabetic(5,10);
+            String author = RandomStringUtils.randomAlphabetic(6,10);
+            String isbn = String.valueOf(1000000 + r.nextFloat() * 9000000);
+            String title = RandomStringUtils.randomAlphabetic(6,10);
             String publishDate = randomDate().toString();
-            //String publishDate = "1991-02-01";
             HashMap<String,Object> map = new HashMap<>();
             map.put("id", gameId());
             map.put("author", author);
@@ -44,15 +45,12 @@ public class AddBook {
             return map;
         }).iterator();
 
+    // driven by generated data and a template instead of from csv/json.
     public static ChainBuilder addBook =
             feed(bookFeeder)
                     .exec(
-                            http("Add book #{title}")
+                            http("Add book")
                                     .post("/book")
-//                                    .formParam("author", "#{author}")
-//                                    .formParam("publishedDate", "#{publishedDate}")
-//                                    .formParam("title", "#{title}")
-//                                    .formParam("isbn", "#{isbn}")
                                     .body(ElFileBody("bodies/BookTemplate.json")).asJson()
                                     .check(status().is(200))
                     );

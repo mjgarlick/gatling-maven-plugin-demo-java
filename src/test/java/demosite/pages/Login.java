@@ -6,6 +6,7 @@ import io.gatling.javaapi.core.FeederBuilder;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
+// Completely faux action, driven from a users.csv file. The mongo db contains those users.
 public class Login {
 
     private static FeederBuilder.FileBased<String> usersFeeder =

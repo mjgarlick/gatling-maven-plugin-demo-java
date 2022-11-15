@@ -13,7 +13,7 @@ public class TestScenario {
             Integer.parseInt(System.getProperty("DURATION", "30")));
 
     public static ScenarioBuilder blendActions =
-        scenario("Default run load test")
+        scenario("Default test of 50:50 behaviour browseSearch/browseLoginSearch")
                 .during(TEST_DURATION)
                 .on(randomSwitch()
                     .on(

@@ -10,7 +10,7 @@ import java.time.Duration;
 
 // Pattern of abstraction for various user pathways through application;
 // grouping request chains to achieve objectives being tested.
-// i.e login, or creating of X, or searching.
+// i.e login, create something, logout.
 public class UserPathway {
 
     private static final Duration LOW_PAUSE = Duration.ofMillis(1000);

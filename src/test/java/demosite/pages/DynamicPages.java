@@ -6,8 +6,8 @@ import io.gatling.javaapi.core.FeederBuilder;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
-// Name irrelevant, more example of use for specific action/behaviour via page
-// navigating around, driven by csv.
+// Name irrelevant, more example of driving a load of get pages from a csv file detailing them
+// for code reuse.
 public class DynamicPages {
 
     private static FeederBuilder.FileBased<String> linkFeeder =
@@ -17,7 +17,7 @@ public class DynamicPages {
             feed(linkFeeder)
                     .exec(http("Visit page #{menuitem}")
                             .get("#{link}")
-                            .check(status().is(200))
+                            .check(status().is(200)));
                            // .check(css("#CategoryName").isEL("#{pageTitle}"))
-                            .check(responseTimeInMillis().lte(500)));
+                           // .check(responseTimeInMillis().lte(500)));
 }
