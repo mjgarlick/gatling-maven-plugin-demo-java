@@ -17,7 +17,7 @@ public class Search {
     // base page returns 200.
     public static ChainBuilder search =
             exec(
-                    http("Search page load")
+                    http("Load ALL BOOKS (search) page")
                             .get("/books/")
                             .check(status().is(200))
             );
@@ -30,6 +30,6 @@ public class Search {
                             http("Search for #{author}")
                                     .get("/books/#{author}")
                                     .check(status().is(200))
-                                    .check(jmesPath("length([])").gt("1"))
+                                    .check(jmesPath("length([])").isEL("#{results}"))
                     );
 }

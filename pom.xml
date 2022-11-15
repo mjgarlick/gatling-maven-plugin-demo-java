@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>uk.co.argo.gatling</groupId>
-  <artifactId>gatling-test-framework-java</artifactId>
+  <artifactId>gatling-test-framework</artifactId>
   <version>3.8.4</version>
 
   <properties>
