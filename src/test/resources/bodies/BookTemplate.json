@@ -1,0 +1,6 @@
+{
+  "author": #{author},
+  "title": #{title},
+  "publishedDate": #{publishDate},
+  "isbn": #{isbn}
+}
