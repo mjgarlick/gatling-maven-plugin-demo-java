@@ -16,31 +16,41 @@ public class UserPathway {
     private static final Duration LOW_PAUSE = Duration.ofMillis(1000);
     private static final Duration HIGH_PAUSE = Duration.ofMillis(3000);
 
-    public static ChainBuilder browseSite =
+    public static ChainBuilder browseAndSearch =
             exec(initSession)
                     .exec(StaticPages.homepage)
                     .pause(LOW_PAUSE)
                     .repeat(4).on(
                             exec(DynamicPages.visitPage)
                                     .pause(LOW_PAUSE)
+                    )
+                    .repeat(2).on(
+                            exec(Search.performSearch)
+                                    .pause(HIGH_PAUSE)
+                    )
+                    .repeat(4).on(
+                            exec(DynamicPages.visitPage)
+                                    .pause(LOW_PAUSE)
+                    )
+                    .repeat(2).on(
+                            exec(Search.performSearch)
+                                    .pause(HIGH_PAUSE)
                     );
 
     public static ChainBuilder loginOnSite =
             exec(initSession)
-//                    .exec(StaticPages.homepage)
-//                    .pause(HIGH_PAUSE)
                     .exec(Login.login)
-//                    .pause(LOW_PAUSE)
-//                    .repeat(4).on(
-//                            exec(DynamicPages.visitPage)
-//                                    .pause(LOW_PAUSE)
-//                    )
                     .pause(LOW_PAUSE)
-                    .exec(Login.logout);
+                    .exec(Login.logout)
+                    .pause(LOW_PAUSE);
 
-    public static ChainBuilder searchComputers =
+    public static ChainBuilder browseLoginSearchAdd =
             exec(initSession)
-                    .exec(Search.search)
+                    .repeat(4).on(
+                            exec(DynamicPages.visitPage)
+                                    .pause(LOW_PAUSE)
+                    )
+                    .exec(Login.login)
                     .pause(LOW_PAUSE)
                     .repeat(2).on(
                             exec(Search.performSearch)
@@ -49,6 +59,12 @@ public class UserPathway {
                     .repeat(2).on(
                             exec(AddBook.addBook)
                                     .pause(HIGH_PAUSE)
-                    );
-                  //  .exec(AddComputer.addComputer);
+                    )
+                    .repeat(2).on(
+                            exec(Search.performSearch)
+                                    .pause(HIGH_PAUSE)
+                    )
+                    .pause(LOW_PAUSE)
+                    .exec(Login.logout)
+                    .pause(LOW_PAUSE);
 }

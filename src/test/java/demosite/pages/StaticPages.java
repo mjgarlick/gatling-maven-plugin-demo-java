@@ -11,9 +11,9 @@ public class StaticPages {
     public static ChainBuilder homepage =
             exec(
                     http("Load home page")
-                            .get("/")
+                            .get("/books")
                             .check(status().is(200))
-                            .check(css("#_csrf", "content").saveAs("csrfToken"))
+                           // .check(css("#_csrf", "content").saveAs("csrfToken"))
             );
 
     public static ChainBuilder about =

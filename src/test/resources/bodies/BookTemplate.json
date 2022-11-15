@@ -1,6 +1,7 @@
 {
-  "author": #{author},
-  "title": #{title},
-  "publishedDate": #{publishDate},
-  "isbn": #{isbn}
+  "_id": #{id},
+  "author": "#{author}",
+  "title": "#{title}",
+  "publishDate": "#{publishDate}",
+  "isbn": "#{isbn}"
 }

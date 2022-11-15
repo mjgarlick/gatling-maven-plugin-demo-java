@@ -1,5 +1,5 @@
-menuitem,link,pageTitle
-about,/about,About
-search,/search,Search
-category,/category,Category
-index,/index,Index
+menuitem,link
+about,/page/about
+search,/page/search
+category,/page/category
+index,/page/index

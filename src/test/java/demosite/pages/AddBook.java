@@ -24,13 +24,19 @@ public class AddBook {
         return LocalDate.ofEpochDay(r.nextInt(-yearVariance, yearVariance));
     }
 
+    public static int gameId() {
+        return (int) (100000 + (r.nextFloat() * 900000));
+    }
+
     private static Iterator<Map<String, Object>> bookFeeder =
         Stream.generate((Supplier<Map<String, Object>>) () -> {
             String author = RandomStringUtils.randomAlphabetic(5,10);
             String isbn = String.valueOf(100000 + r.nextFloat() * 900000);
             String title = RandomStringUtils.randomAlphabetic(5,10);
             String publishDate = randomDate().toString();
+            //String publishDate = "1991-02-01";
             HashMap<String,Object> map = new HashMap<>();
+            map.put("id", gameId());
             map.put("author", author);
             map.put("isbn", isbn);
             map.put("title", title);
