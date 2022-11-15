@@ -24,10 +24,20 @@ public class DemoLoginSite extends Simulation {
     {
         switch(TYPE_OF_TEST) {
             case "RAMP_USERS":
-                setUp(PopulationTypes.rampUpUsers).protocols(httpProtocol);
+                setUp(PopulationTypes.rampUpUsers).protocols(httpProtocol)
+                        .assertions(
+                                global().responseTime().mean().lt(30),
+                                global().successfulRequests().percent().is(100.0),
+                                global().responseTime().max().lt(100)
+                        );
                 break;
             default:
-                setUp(PopulationTypes.immediateUsers).protocols(httpProtocol);
+                setUp(PopulationTypes.immediateUsers).protocols(httpProtocol)
+                        .assertions(
+                                global().responseTime().mean().lt(30),
+                                global().successfulRequests().percent().gt(99.9),
+                                global().responseTime().max().lt(100)
+                        );
                 break;
         }
     }
