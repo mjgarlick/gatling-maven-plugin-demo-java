@@ -24,7 +24,7 @@ public class DemoLoginSite extends Simulation {
                         .assertions(
                                 global().responseTime().mean().lt(30),
                                 global().successfulRequests().percent().is(100.0),
-                                global().responseTime().max().lt(100)
+                                global().responseTime().max().lt(500)
                         );
                 break;
             default:
