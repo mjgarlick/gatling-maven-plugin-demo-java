@@ -40,7 +40,7 @@ public class AddBook {
             map.put("id", gameId());
             map.put("author", author);
             map.put("isbn", isbn);
-            map.put("title", title);
+            map.put("name", title);
             map.put("publishDate", publishDate);
             return map;
         }).iterator();
