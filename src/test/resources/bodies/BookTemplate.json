@@ -1,7 +1,7 @@
 {
   "_id": #{id},
   "author": "#{author}",
-  "title": "#{title}",
+  "name": "#{name}",
   "publishDate": "#{publishDate}",
   "isbn": "#{isbn}"
 }
