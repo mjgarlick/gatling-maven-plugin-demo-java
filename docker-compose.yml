@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  gatling:
+    image: localhost:5000/gatling-test:latest
+    environment:
+      - DOMAIN=${DOMAIN}
+      - TYPE_OF_TEST=${TYPE_OF_TEST}
+      - DURATION=${DURATION}
+      - USERS=${USERS}
+      - RAMP_DURATION=${RAMP_DURATION}
+      - SIMULATION_CLASS=${SIMULATION_CLASS}
+    volumes:
+      - ${OUTPUT_LOCATION}:/results:rw
+    networks:
+      - nodejs-restapi-mongo_test-network
+networks:
+  nodejs-restapi-mongo_test-network:
+    external: true

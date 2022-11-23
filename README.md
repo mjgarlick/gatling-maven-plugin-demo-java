@@ -35,7 +35,16 @@ The pom.xml is using the maven assembly plugin in order to create a jar with its
 Additionally, maven surefire plugin for the test phase of the default build cycle, is set to be skipped.
 Therefore mvn clean package will not run the tests.
 The resultant fat jar being produced can be run at the command line, passing in parameters as required. Most notably is passing in the Simulation class to be run.
-Example:
+Example: (check the pom.xml name of output)
+### Running fat jar
 java -DUSERS=50 -jar target/Gatling-Tests-jar-with-dependencies.jar -s demosite.DemoLoginSite
 
 To pass in further System Properties, extend the -DXXXX=YYY at the start of the command to include the available properties as above.
+
+### .env file settings
+The .env file is docker-compose related, making available env specific environment properties for testing.
+Should be noted that the host/domain may need adjustments depending upon where/how the service to be tested is being run.
+May need network for containers on host, or using host network to connect if service is on "localhost" directly?
+
+### Docker container result output
+See the volume in docker-compose for location of output from simulations.
